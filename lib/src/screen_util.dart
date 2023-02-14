@@ -3,7 +3,6 @@ import 'dart:ui' show FlutterWindow;
 
 import 'package:flutter/widgets.dart';
 import 'package:screen_adapter/screen_adapter.dart';
-import 'package:screen_adapter/src/screen_info.dart';
 
 class ScreenUtil {
   static const Size defaultSize = Size(360, 690);
@@ -54,6 +53,8 @@ class ScreenUtil {
     FlutterWindow? window,
     Duration duration = const Duration(milliseconds: 10),
   ]) async {
+    WidgetsFlutterBinding.ensureInitialized();
+
     final binding = WidgetsFlutterBinding.ensureInitialized();
     window ??= binding.window;
 

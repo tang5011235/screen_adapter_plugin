@@ -1,3 +1,7 @@
 ## 0.0.1
 
-* TODO: Describe initial release.
+* 发布
+
+
+## 0.0.6
+* 正式发布
