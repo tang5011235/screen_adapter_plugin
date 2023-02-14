@@ -3,7 +3,7 @@ import 'dart:ui' show FlutterWindow;
 
 import 'package:flutter/widgets.dart';
 import 'package:screen_adapter/screen_adapter.dart';
-import 'package:screen_adapter/screen_adapter_method_channel.dart';
+import 'package:screen_adapter/src/screen_info.dart';
 
 class ScreenUtil {
   static const Size defaultSize = Size(360, 690);

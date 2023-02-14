@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:screen_adapter/screen_util.dart';
-import 'package:screen_adapter/size_extension.dart';
+import 'package:screen_adapter/screen_adapter.dart';
 
 class ExamplePage extends StatefulWidget {
   const ExamplePage({Key? key}) : super(key: key);

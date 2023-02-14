@@ -19,7 +19,7 @@ import io.flutter.plugin.common.MethodChannel.Result;
 /**
  * ScreenAdapterPlugin
  */
-public class ScreenAdapterPlugin implements FlutterPlugin, MethodCallHandler, ActivityAware {
+public class ScreenAdapterPlugin implements FlutterPlugin, MethodCallHandler {
     private WeakReference<Context> mContext;
 
     /// The MethodChannel that will the communication between Flutter and native Android
@@ -31,6 +31,7 @@ public class ScreenAdapterPlugin implements FlutterPlugin, MethodCallHandler, Ac
 
     @Override
     public void onAttachedToEngine(@NonNull FlutterPluginBinding flutterPluginBinding) {
+        mContext = new WeakReference<>(flutterPluginBinding.getApplicationContext());
         channel = new MethodChannel(flutterPluginBinding.getBinaryMessenger(), "screen_adapter");
         channel.setMethodCallHandler(this);
     }
@@ -66,26 +67,6 @@ public class ScreenAdapterPlugin implements FlutterPlugin, MethodCallHandler, Ac
     @Override
     public void onDetachedFromEngine(@NonNull FlutterPluginBinding binding) {
         channel.setMethodCallHandler(null);
-
-    }
-
-    @Override
-    public void onAttachedToActivity(@NonNull ActivityPluginBinding binding) {
-        mContext = new WeakReference<>(binding.getActivity());
-    }
-
-    @Override
-    public void onDetachedFromActivityForConfigChanges() {
-
-    }
-
-    @Override
-    public void onReattachedToActivityForConfigChanges(@NonNull ActivityPluginBinding binding) {
-
-    }
-
-    @Override
-    public void onDetachedFromActivity() {
         mContext.clear();
     }
 }

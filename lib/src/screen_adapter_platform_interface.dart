@@ -1,4 +1,5 @@
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
+import 'package:screen_adapter/src/screen_info.dart';
 
 import 'screen_adapter_method_channel.dart';
 
