@@ -3,6 +3,7 @@ import 'dart:ui' show FlutterWindow;
 
 import 'package:flutter/widgets.dart';
 import 'package:screen_adapter/screen_adapter.dart';
+import 'package:screen_adapter/screen_adapter_method_channel.dart';
 
 class ScreenUtil {
   static const Size defaultSize = Size(360, 690);
@@ -89,9 +90,12 @@ class ScreenUtil {
       bool splitScreenMode = false,
       bool minTextAdapt = false,
       bool scaleByHeight = false}) async {
-    var physicalHeight = await ScreenAdapter.getPhysicalHeight() ?? 0;
-    var physicalWidth = await ScreenAdapter.getPhysicalWidth() ?? 0;
-    var devicePxRatio = await ScreenAdapter.getDevicePxRatio() ?? 0;
+    var screenInfo = await ScreenAdapter.getScreenInfo() ?? ScreenInfo.create();
+
+    var physicalHeight = screenInfo.physicalHeight;
+    var physicalWidth = screenInfo.physicalWidth;
+    var devicePxRatio = screenInfo.devicePixelRatio;
+
     var deviceSize =
         Size(physicalWidth / devicePxRatio, physicalHeight / devicePxRatio);
     _instance

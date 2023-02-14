@@ -1,4 +1,5 @@
 library screen_adapter;
+import 'screen_adapter_method_channel.dart';
 import 'screen_adapter_platform_interface.dart';
 
 class ScreenAdapter {
@@ -17,4 +18,9 @@ class ScreenAdapter {
   static Future<double?> getPhysicalWidth() {
     return ScreenAdapterPlatform.instance.getPhysicalWidth();
   }
+
+  static Future<ScreenInfo?> getScreenInfo() {
+   return ScreenAdapterPlatform.instance.getScreenInfo();
+  }
 }
+

@@ -18,6 +18,13 @@
    result([NSNumber numberWithFloat:UIScreen.mainScreen.bounds.size.width * UIScreen.mainScreen.scale]);
   }else if([@"getPhysicalHeight" isEqualToString:call.method]){
    result([NSNumber numberWithFloat:UIScreen.mainScreen.bounds.size.height * UIScreen.mainScreen.scale]);
+  }else if([@"getScreenInfo" isEqualToString:call.method]){
+  float width = UIScreen.mainScreen.bounds.size.width * UIScreen.mainScreen.scale;
+  float height = UIScreen.mainScreen.bounds.size.height * UIScreen.mainScreen.scale;
+  float devicePixelRatio = UIScreen.mainScreen.bounds.size.height * UIScreen.mainScreen.scale;
+  //"1,2,3"
+  NSString * string =  [NSString  stringWithFormat: @"%f,%f,%f",devicePixelRatio,width,height];
+   result(string);
   } else {
     result(FlutterMethodNotImplemented);
   }

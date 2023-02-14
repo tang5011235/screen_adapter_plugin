@@ -51,6 +51,12 @@ public class ScreenAdapterPlugin implements FlutterPlugin, MethodCallHandler, Ac
             case "getPhysicalWidth":
                 result.success(ScreenUtil.getPhysicalWidth(mContext.get()));
                 break;
+            case "getScreenInfo":
+                double density = ScreenUtil.getDensity(mContext.get());
+                double physicalHeight = ScreenUtil.getPhysicalHeight(mContext.get());
+                double physicalWidth = ScreenUtil.getPhysicalWidth(mContext.get());
+                result.success(String.format("%f,%f,%f",density,physicalWidth,physicalHeight));
+                break;
             default:
                 result.notImplemented();
                 break;

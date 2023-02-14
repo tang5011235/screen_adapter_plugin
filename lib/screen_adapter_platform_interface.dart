@@ -38,4 +38,7 @@ abstract class ScreenAdapterPlatform extends PlatformInterface {
   Future<double?> getPhysicalWidth() {
     throw UnimplementedError('platformVersion() has not been implemented.');
   }
+  Future<ScreenInfo?> getScreenInfo() {
+    throw UnimplementedError('platformVersion() has not been implemented.');
+  }
 }

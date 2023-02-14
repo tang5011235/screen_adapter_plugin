@@ -11,26 +11,48 @@ class MethodChannelScreenAdapter extends ScreenAdapterPlatform {
 
   @override
   Future<String?> getPlatformVersion() async {
-    final version = await methodChannel.invokeMethod<String>('getPlatformVersion');
+    final version =
+        await methodChannel.invokeMethod<String>('getPlatformVersion');
     return version;
   }
 
-
   @override
   Future<double?> getDevicePxRatio() async {
-    final version = await methodChannel.invokeMethod<double>('getDevicePxRatio');
-    return version;
+    return await methodChannel.invokeMethod<double>('getDevicePxRatio');
   }
 
   @override
   Future<double?> getPhysicalHeight() async {
-    final version = await methodChannel.invokeMethod<double>('getPhysicalHeight');
-    return version;
+    return await methodChannel.invokeMethod<double>('getPhysicalHeight');
   }
 
   @override
   Future<double?> getPhysicalWidth() async {
-    final version = await methodChannel.invokeMethod<double>('getPhysicalWidth');
-    return version;
+    return await methodChannel.invokeMethod<double>('getPhysicalWidth');
   }
+
+  @override
+  Future<ScreenInfo?> getScreenInfo() async {
+    var s = await methodChannel.invokeMethod<String>('getScreenInfo');
+    var split = s?.split(",");
+    if (split == null) {
+      return ScreenInfo.create();
+    } else {
+      return ScreenInfo.create(
+          devicePixelRatio: double.parse(split[0]),
+          physicalWidth: double.parse(split[1]),
+          physicalHeight: double.parse(split[2]));
+    }
+  }
+}
+
+class ScreenInfo {
+  final double physicalWidth;
+  final double physicalHeight;
+  final double devicePixelRatio;
+
+  ScreenInfo.create(
+      {this.physicalWidth = 0,
+      this.physicalHeight = 0,
+      this.devicePixelRatio = 0});
 }
