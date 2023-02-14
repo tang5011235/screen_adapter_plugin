@@ -1,7 +1,7 @@
 name: screen_adapter
 description: 屏幕适配插件
 version: 0.0.1
-homepage:
+homepage: https://github.com/tang5011235/screen_adapter_plugin
 
 environment:
   sdk: '>=2.18.6 <3.0.0'

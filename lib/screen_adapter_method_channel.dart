@@ -17,8 +17,8 @@ class MethodChannelScreenAdapter extends ScreenAdapterPlatform {
 
 
   @override
-  Future<double?> getDevicePxRadio() async {
-    final version = await methodChannel.invokeMethod<double>('getDevicePxRadio');
+  Future<double?> getDevicePxRatio() async {
+    final version = await methodChannel.invokeMethod<double>('getDevicePxRatio');
     return version;
   }
 

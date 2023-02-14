@@ -1,20 +1,20 @@
-
+library screen_adapter;
 import 'screen_adapter_platform_interface.dart';
 
 class ScreenAdapter {
-  Future<String?> getPlatformVersion() {
+  static Future<String?> getPlatformVersion() {
     return ScreenAdapterPlatform.instance.getPlatformVersion();
   }
 
-  Future<double?> getDevicePxRadio() {
-    return ScreenAdapterPlatform.instance.getDevicePxRadio();
+  static Future<double?> getDevicePxRatio() {
+    return ScreenAdapterPlatform.instance.getDevicePxRatio();
   }
 
-  Future<double?> getPhysicalHeight() {
+  static Future<double?> getPhysicalHeight() {
     return ScreenAdapterPlatform.instance.getPhysicalHeight();
   }
 
-  Future<double?> getPhysicalWidth() {
+  static Future<double?> getPhysicalWidth() {
     return ScreenAdapterPlatform.instance.getPhysicalWidth();
   }
 }

@@ -27,7 +27,7 @@ abstract class ScreenAdapterPlatform extends PlatformInterface {
     throw UnimplementedError('platformVersion() has not been implemented.');
   }
 
-  Future<double?> getDevicePxRadio() {
+  Future<double?> getDevicePxRatio() {
     throw UnimplementedError('platformVersion() has not been implemented.');
   }
 

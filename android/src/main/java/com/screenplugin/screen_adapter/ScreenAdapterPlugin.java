@@ -37,14 +37,23 @@ public class ScreenAdapterPlugin implements FlutterPlugin, MethodCallHandler, Ac
 
     @Override
     public void onMethodCall(@NonNull MethodCall call, @NonNull Result result) {
+
         switch (call.method) {
-            case "getPlatformVersion" ->
-                    result.success("Android " + android.os.Build.VERSION.RELEASE);
-            case "getDevicePxRadio" -> result.success(ScreenUtil.getDensity(mContext.get()));
-            case "getPhysicalHeight" ->
-                    result.success(ScreenUtil.getPhysicalHeight(mContext.get()));
-            case "getPhysicalWidth" -> result.success(ScreenUtil.getPhysicalWidth(mContext.get()));
-            default -> result.notImplemented();
+            case "getPlatformVersion":
+                result.success("Android " + android.os.Build.VERSION.RELEASE);
+                break;
+            case "getDevicePxRatio":
+                result.success(ScreenUtil.getDensity(mContext.get()));
+                break;
+            case "getPhysicalHeight":
+                result.success(ScreenUtil.getPhysicalHeight(mContext.get()));
+                break;
+            case "getPhysicalWidth":
+                result.success(ScreenUtil.getPhysicalWidth(mContext.get()));
+                break;
+            default:
+                result.notImplemented();
+                break;
         }
     }
 

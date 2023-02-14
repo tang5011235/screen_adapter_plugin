@@ -5,6 +5,7 @@ import 'dart:async';
 
 import 'package:flutter/services.dart';
 import 'package:screen_adapter/screen_adapter.dart';
+import 'package:screen_adapter_example/example.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,11 +19,28 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        home: HomeWidget()
+    );
+  }
+}
+
+class HomeWidget extends StatefulWidget {
+  const HomeWidget({Key? key}) : super(key: key);
+
+  @override
+  State<HomeWidget> createState() => _HomeWidgetState();
+}
+
+class _HomeWidgetState extends State<HomeWidget> {
   String _platformVersion = 'Unknown';
   double _devicePxRadio = 0;
   double _height = 0;
   double _width = 0;
-  final _screenAdapterPlugin = ScreenAdapter();
 
   @override
   void initState() {
@@ -39,11 +57,11 @@ class _MyAppState extends State<MyApp> {
     // Platform messages may fail, so we use a try/catch PlatformException.
     // We also handle the message potentially returning null.
     try {
-      platformVersion = await _screenAdapterPlugin.getPlatformVersion() ??
+      platformVersion = await ScreenAdapter.getPlatformVersion() ??
           'Unknown platform version';
-      devicePxRadio = await _screenAdapterPlugin.getDevicePxRadio() ?? 0;
-      width = await _screenAdapterPlugin.getPhysicalWidth() ?? 0;
-      height = await _screenAdapterPlugin.getPhysicalHeight() ?? 0;
+      devicePxRadio = await ScreenAdapter.getDevicePxRatio() ?? 0;
+      width = await ScreenAdapter.getPhysicalWidth() ?? 0;
+      height = await ScreenAdapter.getPhysicalHeight() ?? 0;
     } on PlatformException {
       platformVersion = 'Failed to get platform version.';
       height = 0;
@@ -66,27 +84,38 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      builder: (context, child) {
-        return Scaffold(
-          appBar: AppBar(
-            title: const Text('Plugin example app'),
-          ),
-          body: Center(
-            child: Column(
-              children: [
-                Text('Running on: $_platformVersion\n'),
-                Text('Running on: $_height\n'),
-                Text('Running on: $_width\n'),
-                Text('Running on: $_devicePxRadio\n'),
-                Text('原生'),
-                Text(window.physicalSize.toString()),
-                Text(MediaQuery.of(context).devicePixelRatio.toString()),
-              ],
-            ),
-          ),
-        );
-      },
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Plugin example app'),
+      ),
+      body: Center(
+        child: Column(
+          children: [
+            Text('Running on: $_platformVersion\n'),
+            Text('Running on: $_height\n'),
+            Text('Running on: $_width\n'),
+            Text('Running on: $_devicePxRadio\n'),
+            Text('flutter'),
+            Text(window.physicalSize.toString()),
+            Text(MediaQuery
+                .of(context)
+                .devicePixelRatio
+                .toString()),
+            Text(MediaQuery
+                .of(context)
+                .size
+                .toString()),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return const ExamplePage();
+                  }));
+                },
+                child: Text('示例'))
+          ],
+        ),
+      ),
     );
   }
 }
+
