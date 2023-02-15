@@ -46,5 +46,3 @@ class MethodChannelScreenAdapter extends ScreenAdapterPlatform {
     }
   }
 }
-
-

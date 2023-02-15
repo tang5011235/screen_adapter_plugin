@@ -1,5 +1,6 @@
 name: screen_adapter
-description: 屏幕适配插件
+description: 通过调用原生的像素密度，配合flutter_screenutil的适配方式，实现屏幕的适配。仅使用android 和 ios 如有
+能里适配其它端的朋友，敬请提交代码
 version: 1.0.0
 homepage: https://github.com/tang5011235/screen_adapter_plugin
 
