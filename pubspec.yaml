@@ -1,5 +1,5 @@
 name: screen_adapter
-description: 仅使用android 和 ios 如有能里适配其它端的朋友，敬请提交代码
+description: only can be used in flutter mobile application.
 version: 1.1.0
 homepage: https://github.com/tang5011235/screen_adapter_plugin
 
