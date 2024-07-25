@@ -181,7 +181,7 @@ class ScreenUtil {
   ///Font size adaptation method
   ///- [fontSize] The size of the font on the UI design, in dp.
   // double setSp(num fontSize) => fontSize * scaleText;
-  double setSp(num fontSize) => fontSize;
+  double setSp(num fontSize) => fontSize * 1.0;
 
   Widget setVerticalSpacing(num height) => SizedBox(height: setHeight(height));
 
