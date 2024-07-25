@@ -180,7 +180,8 @@ class ScreenUtil {
   ///- [fontSize] UI设计上字体的大小,单位dp.
   ///Font size adaptation method
   ///- [fontSize] The size of the font on the UI design, in dp.
-  double setSp(num fontSize) => fontSize * scaleText;
+  // double setSp(num fontSize) => fontSize * scaleText;
+  double setSp(num fontSize) => fontSize;
 
   Widget setVerticalSpacing(num height) => SizedBox(height: setHeight(height));
 
