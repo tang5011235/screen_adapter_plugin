@@ -1,6 +1,6 @@
 name: screen_adapter
 description: only can be used in flutter mobile application.
-version: 1.1.0
+version: 1.1.1
 homepage: https://github.com/tang5011235/screen_adapter_plugin
 
 environment:
